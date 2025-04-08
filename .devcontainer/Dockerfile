@@ -1,13 +1,1 @@
-FROM mcr.microsoft.com/devcontainers/python:3.9
-
-# Install system dependencies
-RUN apt-get update && apt-get install -y \
-    poppler-utils \
-    && rm -rf /var/lib/apt/lists/*
-
-# Install Python dependencies
-COPY requirements.txt /tmp/
-RUN pip install --no-cache-dir -r /tmp/requirements.txt
-
-# Set the default working directory
-WORKDIR /workspace
+RlJPTSBtY3IubWljcm9zb2Z0LmNvbS9kZXZjb250YWluZXJzL3B5dGhvbjoxLjkgCgojIEluc3RhbGwgc3lzdGVtIGRlcGVuZGVuY2llcwpydW4gYXB0LWdldCB1cGRhdGUgJiYgYXB0LWdldCBpbnN0YWxsIC15IFxcCiAgICBwb3BwZXItdXRpbHMgXFwgCiAgICAmJiBybSAtcmYgL3Zhci9saWIvYXB0L2xpc3RzLyoKCgojIEluc3RhbGwgUHl0aG9uIGRlcGVuZGVuY2llcwpDT1BZIHJlcXVpcmVtZW50cy50eHQgL3RtcC8KUlVOIHBpcCBpbnN0YWxsIC0tbm8tY2FjaGUtaGlyIC1yIC90bXAvcmVxdWlyZW1lbnRzLnR4dAoKIyBTZXQgdGhlIGRlZmF1bHQgd29ya2luZyBkaXJlY3RvcnkKV09SS0RJUiAvd29ya3NwYWNl
