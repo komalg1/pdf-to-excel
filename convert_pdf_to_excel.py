@@ -1,1 +1,32 @@
-aW1wb3J0IHN5cwppbXBvcnQgcGFuZGFzIGFzIHBkCmZyb20gcGRmMmltYWdlIGltcG9ydCBjb252ZXJ0X2Zyb21fcGF0aAppbXBvcnQgcHl0ZXNzZXJhY3QKCmRlZiBjb252ZXJ0X3BkZl90b19leGNlbChwZGZfcGF0aCwgZXhjZWxfcGF0aCk6CiAgICAjIENvbnZlcnQgUERGIHRvIGltYWdlcwogICAgaW1hZ2VzID0gY29udmVydF9mcm9tX3BhdGgocGRmX3BhdGgpCgogICAgIyBFeHRyYWN0IHRleHQgZnJvbSBpbWFnZXMKICAgIGRhdGEgPSBbXQogICAgZm9yIGltYWdlIGluIGltYWdlczoKICAgICAgICB0ZXh0ID0gcHl0ZXNzZXJhY3QuaW1hZ2VfdG9fc3RyaW5nKGltYWdlKQogICAgICAgIHJvd3MgPSB0ZXh0LnNwbGl0KCdcXG4nKQogICAgICAgIGZvciByb3cgaW4gcm93czoKICAgICAgICAgICAgaWYgcm93LnN0cmlwKCk6CiAgICAgICAgICAgICAgICBkYXRhLmFwcGVuZChyb3cuc3BsaXQoKSkKCiAgICAjIENvbnZlcnQgdG8gRGF0YUZyYW1lCiAgICBkZiA9IHBkLkRhdGFGcmFtZShkYXRhKQoKICAgICMgU2F2ZSB0byBFeGNlbAogICAgZGYudG9fZXhjZWwoZXhjZWxfcGF0aCwgaW5kZXg9RmFsc2UsIGhlYWRlcj1GYWxzZSkKCmlmIF9fbmFtZV9fID09ICJfX21haW5fXyI6CiAgICBpZiBsZW4oc3lzLmFyZ3YpICE9IDM6CiAgICAgICAgcHJpbnQoIlVzYWdlOiBweXRob24gY29udmVydF9wZGZfdG9fZXhjZWwuLnB5IDxpbnB1dF9wZGY+IDxvdXRwdXRfZXhjZWw+IikKICAgICAgICBzeXMuZXhpdCgxKQoKICAgIHBkZl9wYXRoID0gc3lzLmFyZ3ZbMV0KICAgIGV4Y2VsX3BhdGggPSBzeXMuYXJndlsyXQogICAgY29udmVydF9wZGZfdG9fZXhjZWwocGRmX3BhdGgsIGV4Y2VsX3BhdGgp
+import sys
+import pandas as pd
+from pdf2image import convert_from_path
+import pytesseract
+
+def convert_pdf_to_excel(pdf_path, excel_path):
+    # Convert PDF to images
+    images = convert_from_path(pdf_path)
+
+    # Extract text from images
+    data = []
+    for image in images:
+        text = pytesseract.image_to_string(image)
+        rows = text.split('\n')
+        for row in rows:
+            if row.strip():
+                data.append(row.split())
+
+    # Convert to DataFrame
+    df = pd.DataFrame(data)
+
+    # Save to Excel
+    df.to_excel(excel_path, index=False, header=False)
+
+if __name__ == "__main__":
+    if len(sys.argv) != 3:
+        print("Usage: python convert_pdf_to_excel.py <input_pdf> <output_excel>")
+        sys.exit(1)
+
+    pdf_path = sys.argv[1]
+    excel_path = sys.argv[2]
+    convert_pdf_to_excel(pdf_path, excel_path)
