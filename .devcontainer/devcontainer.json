@@ -1,13 +1,1 @@
-{
-    "name": "pdf-to-excel",
-    "build": {
-        "dockerfile": "Dockerfile"
-    },
-    "settings": {},
-    "extensions": [
-        "ms-python.python",
-        "ms-python.vscode-pylance"
-    ],
-    "postCreateCommand": "pip install -r requirements.txt",
-    "remoteUser": "vscode"
-}
+ewogICAgIm5hbWUiOiAicGRmLXRvLWV4Y2VsIiwKICAgICJidWlsZCI6IHsKICAgICAgICAiZG9ja2VyZmlsZSI6ICJEb2NrZXJmaWxlIgogICAgfSwKICAgICJzZXR0aW5ncyI6IHt9LAogICAgImV4dGVuc2lvbnMiOiBbCiAgICAgICAgIm1zLXB5dGhvbi5weXRob24iLAogICAgICAgICJtcy1weXRob24udnNjb2RlLXB5bGFuY2UiCiAgICBdLAogICAgInBvc3RDcmVhdGVDb21tYW5kIjogInBpcCBpbnN0YWxsIC1yIHJlcXVpcmVtZW50cy50eHQiLAogICAgInJlbW90ZVVzZXIiOiAidnNjb2RlIgp9
