@@ -1,4 +1,1 @@
-pytesseract
-pandas
-openpyxl
-pdf2image
+cHl0ZXNzZXJhY3QKcGFuZGFzCm9wZW5weHlsCnBkZjJpbWFnZQ==
